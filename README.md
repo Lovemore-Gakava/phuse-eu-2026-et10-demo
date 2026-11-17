@@ -7,4 +7,4 @@ Demo for the PHUSE EU Connect 2026 talk "Specification-to-TLF in R" (session ET1
 - `ET10_demo_slides.pdf`: the demo as a 20-page slide deck.
 - `ET10_demo.mp4`: the demo as a video (9:50).
 
-The second half (ARS export, generated code, results) is illustrative: the numbers are computed for real on public synthetic data, but the code is hand-written and the integration is not built.
+The second half (ARS export, generated code, results) is early work. The numbers are computed for real on public synthetic data. In the workflow, the code that produces the results is generated from the ARS export, using siera or custom code; the script shown is a representative example.
