@@ -44,10 +44,10 @@ function draw(){document.body.classList.toggle('hidectl',!showCtl);document.getE
   if(manual){timer.innerHTML='<small>MANUAL</small>'+(i+1)+' / '+S.length;timer.classList.remove('warn');}
   else if(held){timer.innerHTML='<small>PAUSE</small>'+mmss(Math.floor(heldFor))+' / '+mmss(PAUSE_TARGET);timer.classList.toggle('warn',heldFor>PAUSE_TARGET);}
   else{const left=S[i].d-elapsed;timer.innerHTML='<small>'+(playing?'NEXT IN':'STOPPED')+'</small>'+mmss(left);timer.classList.toggle('warn',playing&&left<=5);}}
-function play(){ if(manual){next();return;} showCtl=false; if(held){held=false; if(i<S.length-1){go(i+1,true);say('▶ '+label());} return;} playing=true;say('▶ Playing');}
+function play(){ if(manual){next();return;} showCtl=false; if(held){held=false; if(i<S.length-1){go(i+1,true);hud.classList.remove('on');} return;} playing=true;say('▶ Playing');}
 function pause(){playing=false;showCtl=true;draw();say('⏸ Paused · Space to continue',true);}
-function next(){ if(i<S.length-1){go(i+1,manual?false:playing||held);if(!manual)say(label());} else if(!manual)say('End · '+label(),true);}
-function prev(){ go(elapsed>2||i===0?i:i-1, manual?false:playing); if(!manual)say(label());}
+function next(){ if(i<S.length-1){go(i+1,manual?false:playing||held);} }
+function prev(){ go(elapsed>2||i===0?i:i-1, manual?false:playing); }
 function tick(ts){ if(last===null)last=ts; const dt=(ts-last)/1000*speed; last=ts;
   if(playing&&!manual){ elapsed+=dt;
     if(elapsed>=S[i].d){ if(S[i].p){playing=false;held=true;heldFor=0;elapsed=S[i].d;say('⏸ '+S[i].p+' · Space to continue',true);}
